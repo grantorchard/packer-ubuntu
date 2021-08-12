@@ -4,8 +4,8 @@ locals {
 	#vcenter_password = vault("/secret/data/hello" "foo")
 }
 
-source "amazon-ebs" "ubuntu-1804-base-ap-southeast-1" {
-  region = "ap-southeast-1"
+source "amazon-ebs" "ubuntu-1804-base" {
+  region = var.region
 
   source_ami_filter {
     filters = {
@@ -21,29 +21,10 @@ source "amazon-ebs" "ubuntu-1804-base-ap-southeast-1" {
   ssh_username = "ubuntu"
   ami_name = "${var.prefix}-${local.timestamp}"
 
-  tags = {
-    owner = var.owner
-    application = var.application
-    Base_AMI_Name = "{{ .SourceAMIName }}"
-  }
-}
-
-source "amazon-ebs" "ubuntu-1804-base-ap-southeast-2" {
-  region = "ap-southeast-2"
-
-  source_ami_filter {
-    filters = {
-			virtualization-type = "hvm"
-			name = "ubuntu/images/*ubuntu-bionic-18.04-amd64-server-*"
-			root-device-type = "ebs"
-    }
-    owners = ["099720109477"] # Canonical
-    most_recent = true
-  }
-
-  instance_type = "t2.medium"
-  ssh_username = "ubuntu"
-  ami_name = "${var.prefix}-${local.timestamp}"
+	ami_regions = [
+		"ap-southeast-1",
+		"ap-southeast-2"
+	]
 
   tags = {
     owner = var.owner

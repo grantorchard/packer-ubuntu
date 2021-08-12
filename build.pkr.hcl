@@ -1,8 +1,7 @@
 build {
   sources = [
 		# "vsphere-iso.ubuntu-1804",
-		"amazon-ebs.ubuntu-1804-base-ap-southeast-1",
-		"amazon-ebs.ubuntu-1804-base-ap-southeast-2"
+		"amazon-ebs.ubuntu-1804-base"
   ]
 	hcp_packer_registry {
 		slug = "other-ubuntu-1804"
