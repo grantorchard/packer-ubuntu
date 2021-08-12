@@ -85,4 +85,5 @@ variable "floppy_path" {
 
 variable "application" {
 	type = string
+	default = ""
 }

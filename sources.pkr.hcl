@@ -37,8 +37,8 @@ source "amazon-ebs" "base" {
 
 source "vsphere-iso" "ubuntu-1804" {
   vcenter_server = var.vcenter_server
-  username = local.vcenter_username
-  password = local.vcenter_password
+  username = var.vcenter_username
+  password = var.vcenter_password
   insecure_connection = var.vcenter_insecure_connection
 
   vm_name   = "${var.vm_name}-${local.timestamp}"
@@ -70,7 +70,7 @@ source "vsphere-iso" "ubuntu-1804" {
 
   iso_paths = var.iso_paths
   floppy_files = [
-    local.floppy_path
+    var.floppy_path
   ]
   boot_command = [<<EOF
 <enter><wait><f6><wait><esc><wait>
