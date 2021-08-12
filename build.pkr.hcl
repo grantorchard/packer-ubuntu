@@ -4,11 +4,11 @@ build {
 		"amazon-ebs.base"
   ]
 	hcp_packer_registry {
-		slug = "base-ubuntu-1804"
-		description = "Base Ubuntu image"
+		slug = "other-ubuntu-1804"
+		description = "Some other Ubuntu image"
 		labels = {
 			"owner" = "Grant Orchard"
-    	"application" = "base"
+    	"application" = "other"
 		}
 	}
 }
